@@ -1,0 +1,37 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/28.0.6 Chrome/138.0.7204.100 Electron/37.2.3 Safari/537.36" version="28.0.6">
+  <diagram id="L2-EdgeNode" name="ERP-CRM L2 Architecture (Edge Node)">
+    <mxGraphModel dx="3042" dy="634" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2000" pageHeight="1400" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="staffApp" value="Staff App (React Native)• Offline-first (4GB)• Local DB via Edge Node (PostgreSQL)• Sync Agent" style="shape=rectangle;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="60" y="120" width="260" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="adminApp" value="Admin App (React Native)• Light offline• Local DB via Edge Node (PostgreSQL)• Config, Pricing, Reports" style="shape=rectangle;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="60" y="280" width="260" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="tgBot" value="Telegram Bot (Python)• Alerts, Quick Actions• LLM Estimate Helper (Pro+)" style="shape=rectangle;rounded=1;fillColor=#ffe6cc;strokeColor=#cc6600;" parent="1" vertex="1">
+          <mxGeometry x="60" y="440" width="260" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="edgeContainer" value="Shop Edge Node (On-Prem / LAN)" style="shape=rectangle;rounded=1;dashed=1;dashPattern=4 4;fillColor=#f7f7f7;strokeColor=#999999;" parent="1" vertex="1">
+          <mxGeometry x="360" y="80" width="380" height="520" as="geometry" />
+        </mxCell>
+        <mxCell id="localProxy" value="Local Sync Proxy / API• REST for tablet (LAN)• Queues mutations when offline• Reads/Writes Local PG" style="shape=rectangle;rounded=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="edgeContainer" vertex="1">
+          <mxGeometry x="40" y="60" width="300" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="localPg" value="Local PostgreSQL (Single-tenant)• Hot set for this shop• Local change_log for sync• Prune/partition when large" style="shape=rectangle;rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="edgeContainer" vertex="1">
+          <mxGeometry x="40" y="240" width="300" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="apiGateway" value="API Gateway / BFF• Auth, Rate Limits, Device Policy• Enforce Entitlements (ACTIVE / LIMITED / SUSPENDED)• Response Shaping" style="shape=rectangle;rounded=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="780" y="200" width="300" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="coreApp" value="Core App Service• CRM, Work Orders• Inventory (reserve/commit/release)• Billing/Payments, Scheduling" style="shape=rectangle;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="1120" y="80" width="300" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="syncService" value="Sync Service• Bridge Local PG ↔ Central PG• Outbox intake (push), Delta feeds (pull)• Conflicts: LWW + command-based inventory• Block push in LIMITED/SUSPENDED (except payment flows)" style="shape=rectangle;rounded=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxGeometry x="1140" y="280" width="300" height="170" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

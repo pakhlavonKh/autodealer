@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { CarInRepair, Appointment } from '@/types/dealer';
 import { mockCarsInRepair, mockAppointments, mockMechanics } from '@/data/dealerMockData';
 import { RepairCard } from '@/components/dealer/RepairCard';
+import { MechanicTimetable } from "@/components/dealer/MechanicTimetable";
 import { AppointmentCard } from '@/components/dealer/AppointmentCard';
 import { MechanicCard } from '@/components/dealer/MechanicCard';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -131,6 +132,10 @@ const DealerDashboard = () => {
                 {mockMechanics.length}
               </Badge>
             </TabsTrigger>
+            <TabsTrigger value="timetable" className="flex items-center gap-2">
+              <Clock className="h-4 w-4" />
+              Timetable
+            </TabsTrigger>
           </TabsList>
 
           <TabsContent value="repairs" className="space-y-6">
@@ -202,6 +207,9 @@ const DealerDashboard = () => {
                 <MechanicCard key={mechanic.id} mechanic={mechanic} />
               ))}
             </div>
+          </TabsContent>
+          <TabsContent value="timetable">
+            <MechanicTimetable mechanics={mockMechanics} carsInRepair={carsInRepair} />
           </TabsContent>
         </Tabs>
       </div>

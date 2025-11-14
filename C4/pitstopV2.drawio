@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net">
+  <diagram id="L2-Flow" name="ERP-CRM L2 Flow">
+    <mxGraphModel dx="1290" dy="750" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Apps -->
+        <mxCell id="staffApp" value="Staff App (React Native)
+• Offline-first
+• Local DB (Postgres Lite)
+• Sync Agent" style="shape=rectangle;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="60" y="80" width="220" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="adminApp" value="Admin App (React Native)
+• Light offline
+• Config, Pricing, Reports
+• Payment Control" style="shape=rectangle;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="60" y="240" width="220" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- Website -->
+        <mxCell id="website" value="Website (Next.js/React)
+• Public Info
+• Client Portal (Pro+)
+• Booking / Status" style="shape=rectangle;rounded=1;fillColor=#ffe6cc;strokeColor=#cc6600;" vertex="1" parent="1">
+          <mxGeometry x="60" y="400" width="220" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- API Gateway -->
+        <mxCell id="apiGateway" value="API Gateway / BFF
+• Auth, Rate Limits
+• Response Shaping" style="shape=rectangle;rounded=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="360" y="200" width="220" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- Core App -->
+        <mxCell id="coreApp" value="Core App Service
+• CRM, Work Orders
+• Inventory, Billing, Scheduling" style="shape=rectangle;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="660" y="80" width="260" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- Sync Service -->
+        <mxCell id="syncService" value="Sync Service
+• Outbox intake
+• Delta feeds
+• Conflict resolution" style="shape=rectangle;rounded=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="660" y="240" width="260" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- Postgres -->
+        <mxCell id="postgres" value="PostgreSQL Primary
+• Multi-tenant, RLS
+• Change Log" style="shape=rectangle;rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="160" width="220" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- Replica -->
+        <mxCell id="replica" value="Read Replica
+• Reporting
+• Sync Pulls" style="shape=rectangle;rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="80" width="200" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Reporting -->
+        <mxCell id="reporting" value="Reporting / Exports
+• XLSX/PDF jobs
+• Object Storage" style="shape=rectangle;rounded=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="220" width="200" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Notifications -->
+        <mxCell id="notifications" value="Notifications
+• SMS / Email / WhatsApp" style="shape=rectangle;rounded=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="340" width="200" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Telegram Bot -->
+        <mxCell id="tgBot" value="Telegram Bot (Python)
+• Alerts, Quick Actions
+• GPT Cost Estimator
+• Approvals (Pro+)" style="shape=rectangle;rounded=1;fillColor=#ffe6cc;strokeColor=#cc6600;" vertex="1" parent="1">
+          <mxGeometry x="360" y="360" width="220" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Redis -->
+        <mxCell id="redis" value="Redis
+• Sessions, Caching, Idempotency" style="shape=rectangle;rounded=1;fillColor=#cccccc;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="320" width="220" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Broker -->
+        <mxCell id="broker" value="Message Broker
+(Kafka/RabbitMQ)
+• Events bus" style="shape=rectangle;rounded=1;fillColor=#cccccc;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="440" width="220" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Connections -->
+        <mxCell id="edge1" edge="1" source="staffApp" target="apiGateway" style="endArrow=block;" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="edge2" edge="1" source="adminApp" target="apiGateway" style="endArrow=block;" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="edge3" edge="1" source="website" target="apiGateway" style="endArrow=block;" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="edge4" edge="1" source="apiGateway" target="coreApp" style="endArrow=block;" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="edge5" edge="1" source="apiGateway" target="syncService" style="endArrow=block;" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="edge6" edge="1" source="coreApp" target="postgres" style="endArrow=block;" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="edge7" edge="1" source="syncService" target="postgres" style="endArrow=block;" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="edge8" edge="1" source="postgres" target="replica" style="endArrow=block;" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="edge9" edge="1" source="replica" target="reporting" style="endArrow=block;" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="edge10" edge="1" source="coreApp" target="notifications" style="endArrow=block;" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="edge11" edge="1" source="tgBot" target="apiGateway" style="endArrow=block;" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="edge12" edge="1" source="coreApp" target="redis" style="endArrow=block;" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="edge13" edge="1" source="coreApp" target="broker" style="endArrow=block;" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

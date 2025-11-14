@@ -1,0 +1,103 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/28.0.6 Chrome/138.0.7204.100 Electron/37.2.3 Safari/537.36" version="28.0.6">
+  <diagram id="L2-Flow" name="ERP-CRM L2 Flow">
+    <mxGraphModel dx="1603" dy="975" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="staffApp" value="Staff App (React Native) • Offline-first • &#xa;Local DB (Postgres) • Sync Agent •&#xa;Work Orders •&#xa; Inventory, Billing, Scheduling" style="shape=rectangle;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="60" y="80" width="220" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="adminApp" value="Admin App (React Native) • Light offline • &#xa;Config, Pricing, Reports •&#xa; Payment Control" style="shape=rectangle;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="60" y="215" width="220" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="website" value="Website (React) • Public Info •&#xa; Client Portal (Pro+) " style="shape=rectangle;rounded=1;fillColor=#ffe6cc;strokeColor=#cc6600;" parent="1" vertex="1">
+          <mxGeometry x="49" y="360" width="220" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="apiGateway" value="API Gateway / BFF • Auth, Rate Limits •&#xa; Response Shaping" style="shape=rectangle;rounded=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="353" y="221" width="227" height="114" as="geometry" />
+        </mxCell>
+        <mxCell id="coreApp" value="Core App Service • CRM" style="shape=rectangle;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="660" y="80" width="260" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="syncService" value="Sync Service  •&#xa; Delta feeds • Conflict resolution" style="shape=rectangle;rounded=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxGeometry x="663" y="218" width="260" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="postgres" value="PostgreSQL Primary • &#xa;Multi-tenant, RLS • Change Log" style="shape=rectangle;rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+          <mxGeometry x="1002" y="80" width="220" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="replica" value="Read Replica • Reporting • Sync Pulls" style="shape=rectangle;rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+          <mxGeometry x="1260" y="90" width="221" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="reporting" value="Reporting / Exports • XLSX/PDF jobs • &#xa;Object Storage" style="shape=rectangle;rounded=1;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" vertex="1">
+          <mxGeometry x="1260" y="225" width="218" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="tgBot" value="Telegram Bot (Python) • Alerts, Quick Actions&#xa;  • Approvals (Pro+)• &#xa;Availability Requests•  Rating Service • &#xa;Booking / Status" style="shape=rectangle;rounded=1;fillColor=#ffe6cc;strokeColor=#cc6600;" parent="1" vertex="1">
+          <mxGeometry x="338.5" y="389" width="256" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="redis" value="Redis • Sessions, Caching, Idempotency" style="shape=rectangle;rounded=1;fillColor=#cccccc;strokeColor=#666666;" parent="1" vertex="1">
+          <mxGeometry x="1000" y="320" width="237" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="edge8" style="endArrow=block;" parent="1" source="postgres" target="replica" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge9" style="endArrow=block;" parent="1" source="replica" target="reporting" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="iu8b05B8MTqUv3Akw9Ry-4" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0.984;entryY=0.929;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="apiGateway" target="staffApp" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="500" y="407" as="sourcePoint" />
+            <mxPoint x="550" y="357" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="iu8b05B8MTqUv3Akw9Ry-5" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="apiGateway" target="adminApp" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="324" as="sourcePoint" />
+            <mxPoint x="313" y="289" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="iu8b05B8MTqUv3Akw9Ry-6" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=1;entryY=0;entryDx=0;entryDy=0;exitX=0;exitY=1;exitDx=0;exitDy=0;" parent="1" source="apiGateway" target="website" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="402" y="372" as="sourcePoint" />
+            <mxPoint x="325" y="337" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="iu8b05B8MTqUv3Akw9Ry-7" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="apiGateway" target="tgBot" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="470" y="595" as="sourcePoint" />
+            <mxPoint x="393" y="560" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="iu8b05B8MTqUv3Akw9Ry-8" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0.984;entryY=0.929;entryDx=0;entryDy=0;entryPerimeter=0;exitX=-0.001;exitY=0.564;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="coreApp" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="650" y="260" as="sourcePoint" />
+            <mxPoint x="573" y="225" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="iu8b05B8MTqUv3Akw9Ry-9" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="syncService" target="apiGateway" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="684" y="375" as="sourcePoint" />
+            <mxPoint x="607" y="340" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="iu8b05B8MTqUv3Akw9Ry-10" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0.984;entryY=0.929;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.046;exitY=0.021;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="redis" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="994" y="227" as="sourcePoint" />
+            <mxPoint x="917" y="192" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="iu8b05B8MTqUv3Akw9Ry-11" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0.021;exitY=0.918;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="postgres" target="syncService" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1082" y="395" as="sourcePoint" />
+            <mxPoint x="1005" y="360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="iu8b05B8MTqUv3Akw9Ry-12" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="postgres" target="coreApp" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1026" y="216" as="sourcePoint" />
+            <mxPoint x="949" y="181" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

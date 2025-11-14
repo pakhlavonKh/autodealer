@@ -21,7 +21,7 @@ export interface Appointment {
   carModel: string;
   serviceType: string;
   scheduledTime: string;
-  duration: number; // in minutes
+  duration: number; 
   status: 'SCHEDULED' | 'IN_PROGRESS' | 'COMPLETED' | 'CANCELLED';
   mechanicAssigned?: string;
   notes?: string;

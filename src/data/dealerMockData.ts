@@ -58,7 +58,7 @@ export const mockCarsInRepair: CarInRepair[] = [
     estimatedCompletion: "2024-08-12T12:00:00",
     actualStartTime: "2024-08-11T14:00:00",
     notes: "AC not cooling properly, checking refrigerant levels",
-    mechanicAssigned: "Akmal Karimov",
+    mechanicAssigned: "Sardor Rahimov",
     priority: "MEDIUM"
   }
 ];
